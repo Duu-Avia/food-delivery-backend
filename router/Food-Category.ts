@@ -3,7 +3,7 @@ import { Router } from "express";
 import {
   FOOD_CATEGORY_MODEL,
   FOOD_CATEGORY_SCHEMA,
-} from "../models/FoodCategoryModel";
+} from "../models/Food-Category";
 
 export const foodCategoryRouter = Router();
 
@@ -47,5 +47,6 @@ foodCategoryRouter.post(
     const newItem = await FOOD_CATEGORY_MODEL.create({
       categoryName: name,
     });
+    res.json({ newItem });
   }
 );
