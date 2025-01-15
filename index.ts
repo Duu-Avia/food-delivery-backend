@@ -2,7 +2,8 @@ import express, { Request, Response } from "express";
 import { configDotenv } from "dotenv";
 import mongoose, { mongo } from "mongoose";
 import { error } from "console";
-import { foodCategoryRouter } from "./router/Food-Category";
+import { foodCategoryRouter } from "./router/food-category";
+
 
 const app = express();
 const port = 8000;

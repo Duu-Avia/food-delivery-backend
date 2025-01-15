@@ -1,9 +1,6 @@
 import express, { Request, Response } from "express";
 import { Router } from "express";
-import {
-  FOOD_CATEGORY_MODEL,
-  FOOD_CATEGORY_SCHEMA,
-} from "../models/Food-Category";
+import { FOOD_CATEGORY_MODEL, FOOD_CATEGORY_SCHEMA } from "../models/food-category";
 
 export const foodCategoryRouter = Router();
 
@@ -47,6 +44,6 @@ foodCategoryRouter.post(
     const newItem = await FOOD_CATEGORY_MODEL.create({
       categoryName: name,
     });
-    res.json({ newItem });
+    res.json({newItem})
   }
 );
