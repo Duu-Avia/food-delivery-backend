@@ -2,8 +2,8 @@ import express, { Request, Response } from "express";
 import { configDotenv } from "dotenv";
 import mongoose, { mongo } from "mongoose";
 import { error } from "console";
-import { foodCategoryRouter } from "./router/food-category";
-
+import { foodCategoryRouter } from "./router/Food-Category";
+import { foodRouter } from "./router/Food";
 
 const app = express();
 const port = 8000;
@@ -28,13 +28,15 @@ const connectMongoDB = async () => {
 };
 connectMongoDB();
 
-app.get("/food-category", foodCategoryRouter);
+app.get("/admin/food_menu", foodCategoryRouter);
+app.put("/admin/food_menu", foodCategoryRouter);
+app.delete("/admin/food_menu", foodCategoryRouter);
+app.post("/admin/food_menu", foodCategoryRouter);
 
-app.put("/food-category/:id", foodCategoryRouter);
-
-app.delete("/food-category/:id", foodCategoryRouter);
-
-app.post("/food-category", foodCategoryRouter);
+app.get("/admin/food_menu/food", foodRouter);
+app.put("/admin/food_menu/food", foodRouter);
+app.delete("/admin/food_menu/food", foodRouter);
+app.post("/admin/food_menu/food", foodRouter);
 
 app.listen(port, () => {
   console.log(`listening port ${port}`);
