@@ -1,7 +1,9 @@
 import express, { Request, Response } from "express";
 import { Router } from "express";
-import { FOOD_CATEGORY_MODEL, FOOD_CATEGORY_SCHEMA } from "../models/food-category";
-
+import {
+  FOOD_CATEGORY_MODEL,
+  FOOD_CATEGORY_SCHEMA,
+} from "../models/Food-category";
 
 export const foodCategoryRouter = Router();
 

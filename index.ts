@@ -2,8 +2,9 @@ import express, { Request, Response } from "express";
 import { configDotenv } from "dotenv";
 import mongoose, { mongo } from "mongoose";
 import { error } from "console";
-import { foodCategoryRouter } from "./router/Food-Category";
+
 import { foodRouter } from "./router/Food";
+import { foodCategoryRouter } from "./router/Food-category";
 
 const app = express();
 const port = 8000;
@@ -33,7 +34,7 @@ app.put("/admin/food_menu", foodCategoryRouter);
 app.delete("/admin/food_menu", foodCategoryRouter);
 app.post("/admin/food_menu", foodCategoryRouter);
 
-app.get("/admin/food_menu/food", foodRouter);
+app.get("/admin/food_menu/food/:id", foodRouter);
 app.put("/admin/food_menu/food", foodRouter);
 app.delete("/admin/food_menu/food", foodRouter);
 app.post("/admin/food_menu/food", foodRouter);
