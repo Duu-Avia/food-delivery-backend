@@ -29,38 +29,44 @@ foodRouter.put(
   async (req: Request, res: Response) => {
     const { id } = req.params;
     const { foodName, price, image, ingredients, category } = req.body;
-    const updatedFood = await FOOD_MODEL.findByIdAndUpdate(id,
-      { foodName: foodName,
+    const updatedFood = await FOOD_MODEL.findByIdAndUpdate(
+      id,
+      {
+        foodName: foodName,
         price: price,
         image: image,
         ingredients: ingredients,
-        category: category},
-        { new: true }
+        category: category,
+      },
+      { new: true }
     );
     res.send(updatedFood);
   }
 );
 
 foodRouter.delete(
-  "/admin/food_menu/food:id",
+  "/admin/food_menu/food",
   async (req: Request, res: Response) => {
-    const { id } = req.params;
-    await FOOD_MODEL.findByIdAndDelete(id);
+    const { _id } = req.body;
+    await FOOD_MODEL.findByIdAndDelete(_id);
     res.send("deleted category");
   }
 );
 
 foodRouter.post(
-  "/admin/food_menu/food",
+  "/admin/food_menu/food/:id",
   async (req: Request, res: Response) => {
     const { foodName, price, image, ingredients, category } = req.body;
-    const newFood = await FOOD_MODEL.create({
-      foodName: foodName,
-      price: price,
-      image: image,
-      ingredients: ingredients,
-      category: category,
-    },{timestamps:true});
+    const newFood = await FOOD_MODEL.create(
+      {
+        foodName: foodName,
+        price: price,
+        image: image,
+        ingredients: ingredients,
+        category: category,
+      },
+      { timestamps: true }
+    );
     res.json({ newFood });
   }
 );

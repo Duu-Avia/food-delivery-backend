@@ -6,7 +6,6 @@ import { error } from "console";
 import { foodRouter } from "./router/Food";
 import { foodCategoryRouter } from "./router/Food-Category";
 
-
 const app = express();
 const port = 8000;
 const fs = require("node:fs");
