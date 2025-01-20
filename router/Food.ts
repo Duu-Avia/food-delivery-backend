@@ -25,16 +25,19 @@ foodRouter.get(
 );
 
 foodRouter.put(
-  "/admin/food_menu/food:id",
+  "/admin/food_menu/food/:id",
   async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { foodName } = req.body;
-    const updatedItem = await FOOD_MODEL.findByIdAndUpdate(
-      id,
-      { foodName },
-      { new: true }
+    const { foodName, price, image, ingredients, category } = req.body;
+    const updatedFood = await FOOD_MODEL.findByIdAndUpdate(id,
+      { foodName: foodName,
+        price: price,
+        image: image,
+        ingredients: ingredients,
+        category: category},
+        { new: true }
     );
-    res.send(updatedItem);
+    res.send(updatedFood);
   }
 );
 
@@ -57,7 +60,7 @@ foodRouter.post(
       image: image,
       ingredients: ingredients,
       category: category,
-    });
+    },{timestamps:true});
     res.json({ newFood });
   }
 );

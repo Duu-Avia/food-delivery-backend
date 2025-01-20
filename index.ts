@@ -4,7 +4,8 @@ import mongoose, { mongo } from "mongoose";
 import { error } from "console";
 
 import { foodRouter } from "./router/Food";
-import { foodCategoryRouter } from "./router/Food-category";
+import { foodCategoryRouter } from "./router/Food-Category";
+
 
 const app = express();
 const port = 8000;
@@ -35,7 +36,7 @@ app.delete("/admin/food_menu", foodCategoryRouter);
 app.post("/admin/food_menu", foodCategoryRouter);
 
 app.get("/admin/food_menu/food/:id", foodRouter);
-app.put("/admin/food_menu/food", foodRouter);
+app.put("/admin/food_menu/food/:id", foodRouter);
 app.delete("/admin/food_menu/food", foodRouter);
 app.post("/admin/food_menu/food", foodRouter);
 
