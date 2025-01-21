@@ -7,7 +7,7 @@ export const foodRouter = Router();
 FOOD_MODEL;
 
 foodRouter.get(
-  `/admin/food_menu/food/:id`,
+  "/admin/food_menu/food/:id",
   async (req: Request, res: Response) => {
     if (!req.params.id) {
       res.json({ message: "aldaa" });
@@ -48,8 +48,8 @@ foodRouter.delete(
   "/admin/food_menu/food",
   async (req: Request, res: Response) => {
     const { _id } = req.body;
-    await FOOD_MODEL.findByIdAndDelete(_id);
-    res.send("deleted category");
+   const deletedItem = await FOOD_MODEL.findByIdAndDelete(_id);
+    res.json(deletedItem);
   }
 );
 
