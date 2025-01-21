@@ -54,7 +54,7 @@ foodRouter.delete(
 );
 
 foodRouter.post(
-  "/admin/food_menu/food/:id",
+  "/admin/food_menu/food",
   async (req: Request, res: Response) => {
     const { foodName, price, image, ingredients, category } = req.body;
     const newFood = await FOOD_MODEL.create(
