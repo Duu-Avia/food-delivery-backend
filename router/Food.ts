@@ -6,7 +6,7 @@ export const foodRouter = Router();
 
 FOOD_MODEL;
 
-foodRouter.get("/admin/food_menu/food/:id", async (req: Request, res: Response) => {
+foodRouter.get("/:id", async (req: Request, res: Response) => {
   if (!req.params.id) {
     res.json({ message: "aldaa" });
     return;
@@ -21,7 +21,7 @@ foodRouter.get("/admin/food_menu/food/:id", async (req: Request, res: Response) 
   }
 });
 
-foodRouter.put("/admin/food_menu/food/:id", async (req: Request, res: Response) => {
+foodRouter.put("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   const { foodName, price, image, ingredients, category } = req.body;
   const updatedFood = await FOOD_MODEL.findByIdAndUpdate(
@@ -38,13 +38,13 @@ foodRouter.put("/admin/food_menu/food/:id", async (req: Request, res: Response) 
   res.send(updatedFood);
 });
 
-foodRouter.delete("/admin/food_menu/food", async (req: Request, res: Response) => {
+foodRouter.delete("", async (req: Request, res: Response) => {
   const { _id } = req.body;
   const deletedItem = await FOOD_MODEL.findByIdAndDelete(_id);
   res.json(deletedItem);
 });
 
-foodRouter.post("/admin/food_menu/food", async (req: Request, res: Response) => {
+foodRouter.post("", async (req: Request, res: Response) => {
   const { foodName, price, image, ingredients, category } = req.body;
   const newFood = await FOOD_MODEL.create(
     {

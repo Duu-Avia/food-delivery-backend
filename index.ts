@@ -3,8 +3,7 @@ import { configDotenv } from "dotenv";
 import mongoose, { mongo } from "mongoose";
 import { foodRouter } from "./router/Food";
 import { foodCategoryRouter } from "./router/Food-Category";
-import { homeFoodRouter } from "./router/Home-food";
-import { homeCategoryRouter } from "./router/Home-category";
+
 
 const app = express();
 const port = 8000;
@@ -29,18 +28,14 @@ const connectMongoDB = async () => {
 };
 connectMongoDB();
 
-app.get("/admin/food_menu", foodCategoryRouter);
-app.put("/admin/food_menu", foodCategoryRouter);
-app.delete("/admin/food_menu", foodCategoryRouter);
-app.post("/admin/food_menu", foodCategoryRouter);
-app.use("food-category", foodCategoryRouter);
-app.get("/admin/food_menu/food/:id", foodRouter);
-app.put("/admin/food_menu/food/:id", foodRouter);
-app.delete("/admin/food_menu/food", foodRouter);
-app.post("/admin/food_menu/food", foodRouter);
+//food category path----------------
+app.use("/food_category", foodCategoryRouter);
 
-app.get("/home", homeCategoryRouter);
-app.get("/home/food", homeFoodRouter);
+//dishes path----------------
+app.use("/dishes", foodRouter);
+
+
+
 
 app.listen(port, () => {
   console.log(`listening port ${port}`);

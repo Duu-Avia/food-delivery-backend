@@ -1,12 +1,13 @@
 import express, { Request, Response } from "express";
 import { Router } from "express";
-import { FOOD_CATEGORY_MODEL, FOOD_CATEGORY_SCHEMA } from "../models/Food-category";
+import { FOOD_CATEGORY_MODEL,  } from "../models/food-category";
+
 
 export const foodCategoryRouter = Router();
 
-FOOD_CATEGORY_SCHEMA;
 
-foodCategoryRouter.get("/admin/food_menu", async (req: Request, res: Response) => {
+
+foodCategoryRouter.get("", async (req: Request, res: Response) => {
   const foodCategory = await FOOD_CATEGORY_MODEL.find();
   res.json(foodCategory);
 });
