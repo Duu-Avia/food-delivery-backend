@@ -1,16 +1,29 @@
 import express, { Request, Response } from "express";
 import { Router } from "express";
 import { FOOD_MODEL } from "../models/Food";
-
+const {verifyToken} = require('@clerk/backend')
 export const foodRouter = Router();
 
 FOOD_MODEL;
 
 foodRouter.get("/:id", async (req: Request, res: Response) => {
+  const token = req.get('authentication')
   if (!req.params.id) {
-    res.json({ message: "aldaa" });
+    res.json({ message: "param id error" });
     return;
   }
+
+  try{
+    const verified = await verifyToken(token, {
+      secretKey: process.env.CLERK_SECRET_KEY,
+    });
+    console.log({verified})
+  } catch (err) {
+    console.error(err, "forbidden token");
+  }
+
+
+
   try {
     const categoryId = req.params.id;
     const food = await FOOD_MODEL.find({ category: categoryId });
@@ -35,7 +48,7 @@ foodRouter.put("/:id", async (req: Request, res: Response) => {
     },
     { new: true }
   );
-  res.send(updatedFood);
+  res.json(updatedFood);
 });
 
 foodRouter.delete("", async (req: Request, res: Response) => {
@@ -58,3 +71,5 @@ foodRouter.post("", async (req: Request, res: Response) => {
   );
   res.json({ newFood });
 });
+
+

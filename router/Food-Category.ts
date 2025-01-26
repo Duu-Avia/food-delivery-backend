@@ -9,20 +9,20 @@ foodCategoryRouter.get("", async (req: Request, res: Response) => {
   res.json(foodCategory);
 });
 
-foodCategoryRouter.put("/admin/food_menu/:id", async (req: Request, res: Response) => {
+foodCategoryRouter.put("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   const { categoryName } = req.body;
   const updatedItem = await FOOD_CATEGORY_MODEL.findByIdAndUpdate(id, { categoryName }, { new: true });
   res.send(updatedItem);
 });
 
-foodCategoryRouter.delete("/admin/food_menu/:id", async (req: Request, res: Response) => {
+foodCategoryRouter.delete("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   await FOOD_CATEGORY_MODEL.findByIdAndDelete(id);
   res.send("deleted category");
 });
 
-foodCategoryRouter.post("/admin/food_menu", async (req: Request, res: Response) => {
+foodCategoryRouter.post("", async (req: Request, res: Response) => {
   const { name } = req.body;
   const newItem = await FOOD_CATEGORY_MODEL.create({
     categoryName: name,

@@ -23,7 +23,7 @@ const connectMongoDB = async () => {
     await mongoose.connect(MONGODB_URL);
     console.log("Database connected successfully");
   } catch (error) {
-    console.log(error);
+   
   }
 };
 connectMongoDB();
@@ -33,8 +33,6 @@ app.use("/food_category", foodCategoryRouter);
 
 //dishes path----------------
 app.use("/dishes", foodRouter);
-
-
 
 
 app.listen(port, () => {
