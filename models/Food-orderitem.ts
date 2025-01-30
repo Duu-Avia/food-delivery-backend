@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
 
-export const FOOD_ORDERITEM = new Schema({
-  food: { type: Schema.Types.ObjectId },
-  quantity: { type: Number },
+export const FOOD_ORDER_ITEM_SCHEMA = new Schema({
+  food: Schema.Types.ObjectId,
+  quantity: Number,
 });
-export const FOOD_MODEL = model("FOOD_ORDERITEM", FOOD_ORDERITEM, "food");
+export const FOOD_ORDER_ITEM_MODEL = model("FOOD_ORDER_ITEM", FOOD_ORDER_ITEM_SCHEMA, "food");
