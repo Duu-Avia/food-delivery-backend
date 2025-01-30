@@ -7,6 +7,7 @@ export const FOOD_ORDER_SCHEMA = new Schema(
     totalPrice: Number,
     foodOrderItems: [FOOD_ORDER_ITEM_SCHEMA],
     status: { type: String, enum: ["PENDING", "CANCELED", "DELIVERED"], default: "PENDING" },
+    address: {type: String}
   },
   { timestamps: true }
 );
