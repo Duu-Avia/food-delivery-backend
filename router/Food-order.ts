@@ -3,18 +3,10 @@ import { Router } from "express";
 const { verifyToken } = require("@clerk/backend");
 import { FOOD_ORDER_MODEL } from "../models/Food-order";
 import { FOOD_MODEL } from "../models/Food";
+import { auth } from "./Food";
 export const foodOrder = Router();
 
 foodOrder.get("/", async (req: Request, res: Response) => {
-  const token = req.get("authentication");
-
-  try {
-    const user = await verifyToken(token, {
-      secretKey: process.env.CLERK_SECRET_KEY,
-    });
-  } catch (err) {
-    console.error(err, "forbidden tokensb");
-  }
 
   try {
     const food = await FOOD_ORDER_MODEL.find();
@@ -24,7 +16,7 @@ foodOrder.get("/", async (req: Request, res: Response) => {
   }
 });
 
-foodOrder.post("/", async (req: any, res: any) => {
+foodOrder.post("/", auth, async (req: any, res: any) => {
   const token = req.get("authentication"); // Look for 'Authorization' header
   console.log(token);
   if (!token) {
@@ -35,7 +27,7 @@ foodOrder.post("/", async (req: any, res: any) => {
     const user = await verifyToken(token, {
       secretKey: process.env.CLERK_SECRET_KEY,
     });
-
+    
     const { totalPrice, foodOrderItem, address } = req.body;
 
     // Validate order data
