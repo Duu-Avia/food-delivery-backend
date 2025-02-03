@@ -10,14 +10,14 @@ foodCategoryRouter.get("/", async (req: Request, res: Response) => {
   res.json(foodCategory);
 });
 
-foodCategoryRouter.put("/:id",auth, async (req: Request, res: Response) => {
+foodCategoryRouter.put("/:id", auth, async (req: Request, res: Response) => {
   const { id } = req.params;
   const { categoryName } = req.body;
   const updatedItem = await FOOD_CATEGORY_MODEL.findByIdAndUpdate(id, { categoryName }, { new: true });
   res.send(updatedItem);
 });
 
-foodCategoryRouter.delete("/:id",auth, async (req: Request, res: Response) => {
+foodCategoryRouter.delete("/:id", auth, async (req: Request, res: Response) => {
   const { id } = req.params;
   await FOOD_CATEGORY_MODEL.findByIdAndDelete(id);
   res.send("deleted category");
@@ -30,4 +30,3 @@ foodCategoryRouter.post("/", auth, async (req: Request, res: Response) => {
   });
   res.json({ newItem });
 });
-
