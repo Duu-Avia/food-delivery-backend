@@ -17,7 +17,7 @@ const dotenv_1 = require("dotenv");
 const mongoose_1 = __importDefault(require("mongoose"));
 const Food_1 = require("./router/Food");
 const Food_order_1 = require("./router/Food-order");
-const Food_category_1 = require("./router/Food-category");
+const Food_categories_1 = require("./router/Food-categories");
 const app = (0, express_1.default)();
 const port = 8000;
 const fs = require("node:fs");
@@ -38,7 +38,7 @@ const connectMongoDB = () => __awaiter(void 0, void 0, void 0, function* () {
 });
 connectMongoDB();
 //food category path----------------
-app.use("/food_category", Food_category_1.foodCategoryRouter);
+app.use("/food_category", Food_categories_1.foodCategoryRouter);
 //dishes path----------------
 app.use("/dishes", Food_1.foodRouter);
 //order path----------------

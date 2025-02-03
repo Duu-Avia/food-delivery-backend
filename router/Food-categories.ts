@@ -2,7 +2,7 @@ import express, { Request, Response } from "express";
 import { Router } from "express";
 
 import { auth } from "./Food";
-import { FOOD_CATEGORY_MODEL } from "../models/Food-category";
+import { FOOD_CATEGORY_MODEL } from "../models/Food-categories";
 
 export const foodCategoryRouter = Router();
 
