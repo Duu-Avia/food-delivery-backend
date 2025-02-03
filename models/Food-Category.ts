@@ -7,8 +7,4 @@ export const FOOD_CATEGORY_SCHEMA = new Schema(
   { versionKey: false }
 );
 
-export const FOOD_CATEGORY_MODEL = model(
-  "food-category",
-  FOOD_CATEGORY_SCHEMA,
-  "food-category"
-);
+export const FOOD_CATEGORY_MODEL = model("food-category", FOOD_CATEGORY_SCHEMA, "food-category");

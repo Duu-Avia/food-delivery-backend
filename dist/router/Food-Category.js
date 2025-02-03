@@ -33,8 +33,8 @@ var __awaiter =
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.foodCategoryRouter = void 0;
 const express_1 = require("express");
-const Food_category_1 = require("../models/Food-category");
 const Food_1 = require("./Food");
+const Food_category_1 = require("../models/Food-category");
 exports.foodCategoryRouter = (0, express_1.Router)();
 exports.foodCategoryRouter.get("/", (req, res) =>
   __awaiter(void 0, void 0, void 0, function* () {

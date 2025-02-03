@@ -4,7 +4,7 @@ import mongoose, { mongo } from "mongoose";
 import { foodRouter } from "./router/Food";
 
 import { foodOrder } from "./router/Food-order";
-import { foodCategoryRouter } from "./router/Food-Category";
+import { foodCategoryRouter } from "./router/Food-category";
 
 const app = express();
 const port = 8000;
