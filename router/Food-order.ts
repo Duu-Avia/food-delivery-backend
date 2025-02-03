@@ -7,7 +7,6 @@ import { auth } from "./Food";
 export const foodOrder = Router();
 
 foodOrder.get("/", async (req: Request, res: Response) => {
-
   try {
     const food = await FOOD_ORDER_MODEL.find();
     res.json(food);
@@ -27,7 +26,7 @@ foodOrder.post("/", auth, async (req: any, res: any) => {
     const user = await verifyToken(token, {
       secretKey: process.env.CLERK_SECRET_KEY,
     });
-    
+
     const { totalPrice, foodOrderItem, address } = req.body;
 
     // Validate order data
