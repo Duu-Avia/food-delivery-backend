@@ -13,7 +13,9 @@ const cors = require("cors");
 
 configDotenv();
 app.use(express.json());
-app.use(cors({ origin: 'https://food-delivery-pied-nine.vercel.app' }));
+app.use(cors({ origin: 'https://food-delivery-pied-nine.vercel.app',
+  credential:true,
+ }));
 
 const connectMongoDB = async () => {
   const MONGODB_URL = process.env.MONGODB_URI;
